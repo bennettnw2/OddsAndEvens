@@ -46,12 +46,6 @@ public class OddsEvens {
       System.out.print( "Now select any number of fingers between 0 - 5: ");
       int fingers = input.nextInt();
 
-      if(input.hasNextInt(fingers)) {
-          System.out.println( "It's and INT!" );
-      } else {
-          System.out.println( "It's a STRING!" );
-      }
-
       while (fingers != 0 &&
              fingers != 1 &&
              fingers != 2 &&
