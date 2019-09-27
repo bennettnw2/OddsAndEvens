@@ -23,29 +23,47 @@ public class OddsEvens {
     System.out.println( "Well hello there, " + name + "!");
     System.out.println( "-------------------------" );
 
-    while ((again.equals("y")) || (again.equals("Y"))) {
+    while (again.equals("y") || again.equals("Y")) {
       System.out.println( );
       System.out.print( name + ", please select (o)dds or (e)vens: " );
       String select = input.next();
+
+      while (!select.equals("o") && !select.equals("e")) {
+          System.out.println( "Sorry! That is not a valid option." );
+          System.out.print( name + ", would you please select either (o)dds or (e)vens: " );
+          select = input.next();
+      }
+      
       if (select.equals("o")) {
         System.out.println( "You selected Odds so I shall be Evens." );
-      } else if (select.equals("e")) {
+      } else { 
+        select.equals("e");
         System.out.println( "You selected Evens so I shall be Odds." );
-      } else {
-        select = "e";
-        System.out.println( "Hmmm, I'll assume you meant Evens which means I will be Odds." );
-      }
+      } 
       System.out.println( "-------------------------" );
 
       System.out.println( );
       System.out.print( "Now select any number of fingers between 0 - 5: ");
       int fingers = input.nextInt();
-      if ( (fingers >= 0) && (fingers <= 5) ) {
-        System.out.println( "You selected " + fingers + " fingers." );
+
+      if(input.hasNextInt(fingers)) {
+          System.out.println( "It's and INT!" );
       } else {
-        fingers = 0 + (int)(Math.random() * 6);
-        System.out.println( "Hmmm, did you type " + fingers + " fingers?  Great!  Let's play!" );
+          System.out.println( "It's a STRING!" );
       }
+
+      while (fingers != 0 &&
+             fingers != 1 &&
+             fingers != 2 &&
+             fingers != 3 &&
+             fingers != 4 &&
+             fingers != 5 ) {
+          System.out.println( "Sorry! That is not a valid option." );
+          System.out.print( "Please select any number of fingers between 0 - 5: ");
+          fingers = input.nextInt();
+      }
+
+      System.out.println( "You selected " + fingers + " fingers." );
       int rand = 0 + (int)(Math.random() * 6);
       System.out.println( "I've selected, " + rand + " fingers!");
       System.out.println( "-------------------------" );
@@ -71,7 +89,7 @@ public class OddsEvens {
       }
       System.out.println( "-------------------------" );
 
-      System.out.println( "Would you like to play again? (y or n): " );
+      System.out.print( "Would you like to play again? (y or n): " );
       again = input.next();
 
       if ((again.equals("y")) || (again.equals("Y"))) {
