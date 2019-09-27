@@ -14,60 +14,73 @@ public class OddsEvens {
     
     int evenPlayer = 0;
     int oddPlayer = 1;
-
+    String again = "y";
+    
     System.out.println( );
     System.out.println( "Let's play a game called \"Odds and Evens\"" );
     System.out.print( "What is your Name? " );
     String name = input.next();
     System.out.println( "Well hello there, " + name + "!");
     System.out.println( "-------------------------" );
+
+    while ((again.equals("y")) || (again.equals("Y"))) {
+      System.out.println( );
+      System.out.print( name + ", please select (o)dds or (e)vens: " );
+      String select = input.next();
+      if (select.equals("o")) {
+        System.out.println( "You selected Odds so I shall be Evens." );
+      } else if (select.equals("e")) {
+        System.out.println( "You selected Evens so I shall be Odds." );
+      } else {
+        select = "e";
+        System.out.println( "Hmmm, I'll assume you meant Evens which means I will be Odds." );
+      }
+      System.out.println( "-------------------------" );
+
+      System.out.println( );
+      System.out.print( "Now select any number of fingers between 0 - 5: ");
+      int fingers = input.nextInt();
+      if ( (fingers >= 0) && (fingers <= 5) ) {
+        System.out.println( "You selected " + fingers + " fingers." );
+      } else {
+        fingers = 0 + (int)(Math.random() * 6);
+        System.out.println( "Hmmm, did you type " + fingers + " fingers?  Great!  Let's play!" );
+      }
+      int rand = 0 + (int)(Math.random() * 6);
+      System.out.println( "I've selected, " + rand + " fingers!");
+      System.out.println( "-------------------------" );
+
+      System.out.println( );
+      int total = fingers + rand;
+      int result = total % 2;
+      System.out.println( "Well, " + fingers + " + " + rand + " = " + total);
+      if ( result == 0 ) {
+        System.out.println( "And " + total + " is .... Even!");
+        if ( select.equals("e") ) {
+            System.out.println( "Which means " + name + " wins!  You're really something else :)" );
+        } else {
+            System.out.println( "Which means I've won!  Good game!  Let's play again!");
+        }
+      } else {
+        System.out.println( "And " + total + " is .... Odd!");
+        if ( select.equals("o") ) {
+            System.out.println( "Which means " + name + " wins!  You're really something else :)" );
+        } else {
+            System.out.println( "Which means I've won!  Good game!  Let's play again!");
+        }
+      }
+      System.out.println( "-------------------------" );
+
+      System.out.println( "Would you like to play again? (y or n): " );
+      again = input.next();
+
+      if ((again.equals("y")) || (again.equals("Y"))) {
+          System.out.println( "Great! Lesss goooooo!" );
+      } else {
+          System.out.println( "Ok! See ya later!" );
+      }
+    }
     
-    System.out.println( );
-    System.out.print( name + ", please select (o)dds or (e)vens: " );
-    String select = input.next();
-    if (select.equals("o")) {
-      System.out.println( "You selected Odds so I shall be Evens." );
-    } else if (select.equals("e")) {
-      System.out.println( "You selected Evens so I shall be Odds." );
-    } else {
-      select = "e";
-      System.out.println( "Hmmm, I'll assume you meant Evens which means I will be Odds." );
-    }
-    System.out.println( "-------------------------" );
-
-    System.out.println( );
-    System.out.print( "Now select any number of fingers between 0 - 5: ");
-    int fingers = input.nextInt();
-    if ( (fingers >= 0) && (fingers <= 5) ) {
-      System.out.println( "You selected " + fingers + " fingers." );
-    } else {
-      fingers = 0 + (int)(Math.random() * 6);
-      System.out.println( "Hmmm, did you type " + fingers + " fingers?  Great!  Let's play!" );
-    }
-    int rand = 0 + (int)(Math.random() * 6);
-    System.out.println( "I've selected, " + rand + " fingers!");
-    System.out.println( "-------------------------" );
-
-    System.out.println( );
-    int total = fingers + rand;
-    int result = total % 2;
-    System.out.println( "Well, " + fingers + " + " + rand + " = " + total);
-    if ( result == 0 ) {
-      System.out.println( "And " + total + " is .... Even!");
-      if ( select.equals("e") ) {
-        System.out.println( "Which means " + name + " wins!  You're really something else :)" );
-      } else {
-        System.out.println( "Which means I've won!  Good game!  Let's play again!");
-      }
-    } else {
-      System.out.println( "And " + total + " is .... Odd!");
-      if ( select.equals("o") ) {
-        System.out.println( "Which means " + name + " wins!  You're really something else :)" );
-      } else {
-        System.out.println( "Which means I've won!  Good game!  Let's play again!");
-      }
-    }
-    System.out.println( "-------------------------" );
   }
 }
 
